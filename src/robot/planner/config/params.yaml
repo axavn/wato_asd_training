@@ -1,3 +1,8 @@
-# planner_node:
-#   ros__parameters:
-    
+# Decimal values MUST keep their ".0" (e.g. 120.0, not 120), or the node will crash on startup
+planner_node:
+  ros__parameters:
+    goal_tolerance: 0.5      # meters; closer than this counts as "goal reached"
+    goal_timeout: 300.0      # real-world seconds before giving up (the sim often runs at ~0.5-0.8x speed)
+    obstacle_threshold: 35   # cells with cost >= this are walls (35 = about 1.1 m from an obstacle)
+    cost_weight: 5.0         # how strongly paths avoid cells near obstacles
+    goal_snap_radius: 2.5    # meters; a goal too close to a wall moves to the nearest safe spot within this

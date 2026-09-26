@@ -1,3 +1,13 @@
-# control_node:
-#   ros__parameters:
-    
+# Decimal values MUST keep their ".0" (e.g. 1.0, not 1), or the node will crash on startup
+control_node:
+  ros__parameters:
+    lookahead_distance: 2.5   # meters ahead on the path to aim for (bigger = smoother, less precise)
+    goal_tolerance: 0.3       # meters; stop when this close to the end of the path
+    linear_speed: 0.5         # m/s top speed, on straights
+    min_linear_speed: 0.2     # m/s; curves never slow the robot below this
+    curvature_slowdown: 1.0   # how much curves slow the robot (0.0 = constant speed)
+    max_angular_speed: 0.3    # rad/s turning speed limit (kept low: the sim can deliver commands late)
+    max_acceleration: 0.5     # m/s^2; speed up gradually, brake instantly
+    turn_enter_angle: 1.0     # rad (~57 deg); start turning on the spot when this far off course...
+    turn_exit_angle: 0.3      # rad (~17 deg); ...and keep turning until within this
+    turn_gain: 0.4            # rad/s of spin per rad off course (slows the spin as it lines up)

@@ -1,3 +1,14 @@
-# map_memory_node:
-#   ros__parameters:
-    
+# Decimal values MUST keep their ".0" (e.g. 40.0, not 40), or the node will crash on startup
+map_memory_node:
+  ros__parameters:
+    resolution: 0.1           # meters per grid cell
+    map_width: 40.0           # meters (the arena's walls are at +/-15 m)
+    map_height: 40.0          # meters
+    origin_x: -20.0           # bottom-left corner of the map, in meters
+    origin_y: -20.0
+    map_frame: "sim_world"    # the simulator's world frame
+    update_period: 1.0        # seconds between map publishes
+    distance_threshold: 1.5   # update the map after the robot moves this many meters...
+    yaw_threshold: 0.5        # ...or turns this many radians (about 30 degrees)...
+    max_update_interval: 2.0  # ...or this many seconds pass, whichever comes first
+    max_yaw_rate: 0.3         # rad/s; never update the map while turning faster than this

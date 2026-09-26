@@ -1,3 +1,8 @@
-# costmap_node:
-#   ros__parameters:
-
+# Decimal values MUST keep their ".0" (e.g. 2.0, not 2), or the node will crash on startup
+costmap_node:
+  ros__parameters:
+    resolution: 0.1          # meters per grid cell
+    width: 300               # cells (300 x 0.1 m = 30 m wide)
+    height: 300              # cells
+    inflation_radius: 1.8    # meters of "keep away" padding around obstacles
+    max_inflation_cost: 90   # cost right next to an obstacle (obstacles themselves are 100)
